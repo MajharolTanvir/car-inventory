@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <div className='container'>
             <div>
-                <Carousel slides={slides} autoplay={true} interval={1000} />
+                <Carousel slides={slides} autoplay={true} interval={3000} />
             </div>
             <div className='my-5'>
                 <h3 className='my-5'>Inventory</h3>

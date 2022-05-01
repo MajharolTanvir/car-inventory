@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddNewItems from './component/AddNewItems/AddNewItems';
 import NotFound from './component/NotFound/NotFound';
 import Product from './component/Product/Product'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
