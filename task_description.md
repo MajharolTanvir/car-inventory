@@ -4,24 +4,26 @@ Our company focuses on a warehouse management (inventory management) website. Cu
 We have a sample task for you.
 
 ## Website Purpose:
-1. Your website must be related to multiple items warehouse/inventory management websites. Some examples of inventory management could be: managing inventory of any types of products like- grocery stock, spice warehouse, fruits warehouse, books, perfumes, dresses, gym equipment, bikes, electronics (TV, fridge, microwave, laptop, computer, smartphone, etc.), furniture, hiking gears, sports gear, outdoor camping gears, Vehicle/fleet inventory (car, truck, motor bike, bicycle), toys, etc. However, your website can not be a ticket selling or an e-commerce site. 
+1. Your website must be related to multiple items warehouse/inventory management websites. Some examples of inventory management could be: managing inventory of any types of products like- grocery stock, spice warehouse, fruits warehouse, books, perfumes, dresses, gym equipment, bikes, electronics (TV, fridge, microwave, laptop, computer, smartphone, etc.), furniture, hiking gears, sports gear, outdoor camping gears, Vehicle/fleet inventory (car, truck, motor bike, bicycle), toys, etc. However, your website can not be a ticket selling or an e-commerce site. (done)
 
-2. Make sure your design and website idea are unique. First, finalize your idea (what website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any practice project displayed in the course or our conceptual sessions. 
+2. Make sure your design and website idea are unique. First, finalize your idea (what website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any practice project displayed in the course or our conceptual sessions. (done)
+
 3. Make sure your code or design doesn't match any of the projects implemented in our course. 
+(done)
 4. You may include this assignment in your final resume, so make sure they are good-looking. And we will have some dedicated marks for the design. Just pay some attention to the design.
     
 3. Initially, do not spend too much thinking about the design. Just spend 5-10 minutes to finalize the idea. Another 15-30 minutes to search for a similar website design and start working on the project. If needed, put a placeholder image and keep developing the functionalities. Once the functionalities are implemented, come back to add relevant images. 
 
 ### Task Details: 
-1. Home page will have a header (simple navbar), banner, items (inventory items that you are managing. Maximum 6 items), and footer.
+1. Home page will have a header (simple navbar), banner, items (inventory items that you are managing. Maximum 6 items), and footer.(done)
 
-2. Add two extra sections on the home page and the four sections mentioned above. Tips: This is the place to shine. Add something different and unique to make your website looks different than others. And Make them relevant to your website.
+2. Add two extra sections on the home page and the four sections mentioned above. Tips: This is the place to shine. Add something different and unique to make your website looks different than others. And Make them relevant to your website.(not Done)
 
-3. You will have six items in the inventory items section. You can put one or more items in a row based on your design. Each article should have a relevant name, image, short description, price, quantity, supplier name, and an update button (button could say: update or manage or stock update, etc.). 
+3. You will have six items in the inventory items section. You can put one or more items in a row based on your design. Each article should have a relevant name, image, short description, price, quantity, supplier name, and an update button (button could say: update or manage or stock update, etc.). (done)
 
-4. Clicking on the button will take the user to the `inventory/:id` route. This route will be a private/protected route. Please make sure that the private route redirects to the login page if the user is not logged in. After login, the user will be redirected to the page he/she wanted to go to. Also, after reloading the page of a private route, the user is not redirected to the login page.
+4. Clicking on the button will take the user to the `inventory/:id` route. This route will be a private/protected route. Please make sure that the private route redirects to the login page if the user is not logged in. After login, the user will be redirected to the page he/she wanted to go to. Also, after reloading the page of a private route, the user is not redirected to the login page.(almost done)
 
-5. The `inventory/:id` page should display detailed item information like id, name, image, description, price, quantity, supplier name, sold, etc. This page will have a Button named `delivered`. Once this button is clicked, it will reduce the quantity of the item by one. Make sure this data is saved on the database, and the change in quantity is displayed on the website. 
+5. The `inventory/:id` page should display detailed item information like id, name, image, description, price, quantity, supplier name, sold, etc. This page will have a Button named `delivered`. Once this button is clicked, it will reduce the quantity of the item by one. Make sure this data is saved on the database, and the change in quantity is displayed on the website. (almost done)
 
 6. There will be a small form on the `inventory/:id` page. The from will say, restock the items. You will have an input field where you can put some numbers. And hitting the button will increase the quantity of the item.
 

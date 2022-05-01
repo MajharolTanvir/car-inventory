@@ -10,6 +10,7 @@ import Header from './component/Header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddNewItems from './component/AddNewItems/AddNewItems';
 import NotFound from './component/NotFound/NotFound';
+import Product from './component/Product/Product'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/inventory' element={<Inventory></Inventory>}></Route>
+        <Route path='/inventory/:id' element={<Product></Product>}></Route>
         <Route path='/myitems' element={<MyItems></MyItems>}></Route>
         <Route path='/addNewItems' element={<AddNewItems></AddNewItems>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
