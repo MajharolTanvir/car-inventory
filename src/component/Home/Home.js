@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel } from '3d-react-carousal';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import useProduct from '../../Hooks/useProduct';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     let slides = [
@@ -18,13 +18,17 @@ const Home = () => {
         navigate(`/inventory/${id}`)
     }
 
+    const handledelete = () => {
+
+    }
+
 
     return (
         <div className='container'>
             <div>
                 <Carousel slides={slides} autoplay={true} interval={3000} />
             </div>
-            <div className='my-5'>
+            <div className='my-5 text-center'>
                 <h3 className='my-5 text-center'>Inventory</h3>
                 <div className='grid grid-cols-3'>
                     {
@@ -34,7 +38,7 @@ const Home = () => {
                                 <Card.Body>
                                     <Card.Title>{product?.name}</Card.Title>
                                     <Card.Text>
-                                        {product?.about ? product.about.slice(0, 100) : product.about}
+                                        {product?.about ? product.about.slice(0, 60) : product.about}
                                     </Card.Text>
                                 </Card.Body>
                                 <ListGroup className="list-group-flush">
@@ -44,11 +48,13 @@ const Home = () => {
                                 </ListGroup>
                                 <Card.Body>
                                     <Card.Link to="/"><button onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
+                                    <Card.Link to="/"><button onClick={() => handledelete(product._id)}>delete product</button></Card.Link>
                                 </Card.Body>
                             </Card>
                         </div>)
                     }
                 </div>
+                <Link to="/inventory"><button className='font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md'>Manage inventory</button></Link>
             </div>
         </div>
     );

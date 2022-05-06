@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SocialLink from '../SocialLink/SocialLink';
 
 
-    
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()

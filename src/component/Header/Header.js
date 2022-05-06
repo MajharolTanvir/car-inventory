@@ -8,7 +8,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
 
     const handleLogOut = () => {
-        signOut(auth)
+        signOut()
     }
     return (
         <div className='container'>
@@ -24,13 +24,7 @@ const Header = () => {
                                 <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/inventory">Inventory</Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link className="nav-link" to="/myItems">My items</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/addNewItems">Add Items</Link>
                             </li>
                             {user?.email ? <button onClick={handleLogOut}>Log out</button> :
                                 <li className="nav-item">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -42,8 +42,9 @@ const Product = () => {
         console.log(number);
 
     }
+
     return (
-        <div>
+        <div className='text-center'>
             <div className='mx-auto my-10 container'>
                 <Row xs={1} md={1} className='max-w-3xl mx-auto'>
                     <Col>
@@ -63,12 +64,15 @@ const Product = () => {
                     </Col>
                 </Row>
             </div>
-            <div>
+            <div className='text-center mb-5'>
+                <h3>Update your product quantity</h3>
                 <form onSubmit={handleSubmit}>
-                    <input type="Text" name="number" className='border-2 border-sky-500' />
-                    <input type="submit" value="Submit" />
+                    <input type="Text" name="number" className='py-1 rounded-md border-2 border-sky-500' />
+                    <input className='py-1 px-3 border-2 border-sky-500 ml-2 rounded-md' type="submit" value="Submit" />
                 </form>
             </div>
+            <Link to="/inventory"><button className='font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Manage inventory</button></Link>
+            <Link to="/addNewItem"><button className=' ml-3 font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Add new Item</button></Link>
         </div>
     );
 };

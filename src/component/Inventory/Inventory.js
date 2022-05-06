@@ -1,13 +1,30 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useProduct from '../../Hooks/useProduct';
 
 const Inventory = () => {
-    const [products] = useProduct()
+    const [products, setProducts] = useProduct()
     const navigate = useNavigate()
     const handleUpdate = id => {
         navigate(`/inventory/${id}`)
+    }
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure? You went to delete tis product?')
+        if (proceed) {
+            const url = `https://car-inventory-bd.herokuapp.com/inventory/id=${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    toast('Items Delete successfully', data)
+                    const remaining = products.filter(product => product.id !== id)
+                    setProducts(remaining)
+                })
+        }
     }
     return (
         <div className='grid grid-cols-3 mx-auto container'>
@@ -18,7 +35,7 @@ const Inventory = () => {
                         <Card.Body>
                             <Card.Title>{product?.name}</Card.Title>
                             <Card.Text>
-                                {product?.about ? product.about.slice(0, 80) : product.about}
+                                {product?.about ? product.about.slice(0, 60) : product.about}
                             </Card.Text>
                         </Card.Body>
                         <ListGroup className="list-group-flush">
@@ -28,6 +45,7 @@ const Inventory = () => {
                         </ListGroup>
                         <Card.Body>
                             <Card.Link to="/"><button onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
+                            <Card.Link to="/"><button onClick={() => handleDelete(product._id)}>detete product</button></Card.Link>
                         </Card.Body>
                     </Card>
                 </div>)
