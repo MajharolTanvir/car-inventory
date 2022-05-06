@@ -33,6 +33,7 @@ const Registration = () => {
 
     const handleSubmit = event => {
         event.preventDefault()
+
         if (password !== confirmPassword) {
             setError('Please enter the same password')
             return;
@@ -83,7 +84,7 @@ const Registration = () => {
                 </p>
                 {error ? <p style={{ color: 'red' }}>Error: {error}</p> : ''}
                 <Button variant="primary" type="submit">
-                    Submit
+                    Register
                 </Button>
             </Form>
         </div>

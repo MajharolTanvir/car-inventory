@@ -26,20 +26,21 @@ const Product = () => {
         const number = event.target.number.value;
 
         // put method
-        // fetch(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(number),
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log('Success:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
+        fetch(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(number),
+        })
+            .then(response => response.json())
+            .then(number => {
+                console.log('Success:', number);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
     }
     return (
         <div>

@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,10 @@ import auth from '../../Firebase.init';
 
 const Header = () => {
     const [user] = useAuthState(auth);
+
+    const handleLogOut = () => {
+        signOut()
+    }
     return (
         <div className='container'>
             <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -16,7 +21,7 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/inventory">Inventory</Link>
@@ -27,7 +32,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/addNewItems">Add Items</Link>
                             </li>
-                            {user ? <button>Log out</button> :
+                            {user?.email ? <button onClick={handleLogOut}>Log out</button> :
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/login">Login</Link>
                                 </li> 

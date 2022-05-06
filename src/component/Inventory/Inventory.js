@@ -8,12 +8,12 @@ const Inventory = () => {
         <div className='grid grid-cols-3 mx-auto container'>
             {
                 products.map(product => <div key={product._id} className='my-3'>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem', }}>
                         <Card.Img variant="top" src={product?.picture} />
                         <Card.Body>
                             <Card.Title>{product?.name}</Card.Title>
                             <Card.Text>
-                                {product?.about ? product.about.slice(0, 120) : product.about}
+                                {product?.about ? product.about.slice(0, 80) : product.about}
                             </Card.Text>
                         </Card.Body>
                         <ListGroup className="list-group-flush">

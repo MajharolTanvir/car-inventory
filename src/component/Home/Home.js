@@ -25,7 +25,7 @@ const Home = () => {
                 <Carousel slides={slides} autoplay={true} interval={3000} />
             </div>
             <div className='my-5'>
-                <h3 className='my-5'>Inventory</h3>
+                <h3 className='my-5 text-center'>Inventory</h3>
                 <div className='grid grid-cols-3'>
                     {
                         products.slice(0, 6).map(product => <div key={product._id} className='my-3'>
@@ -34,7 +34,7 @@ const Home = () => {
                                 <Card.Body>
                                     <Card.Title>{product?.name}</Card.Title>
                                     <Card.Text>
-                                        {product?.about ? product.about.slice(0, 120) : product.about}
+                                        {product?.about ? product.about.slice(0, 100) : product.about}
                                     </Card.Text>
                                 </Card.Body>
                                 <ListGroup className="list-group-flush">
