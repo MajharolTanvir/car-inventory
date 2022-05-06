@@ -12,16 +12,16 @@ const Inventory = () => {
     }
 
     const handleDelete = id => {
-        const proceed = window.confirm('Are you sure? You went to delete tis product?')
+        const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `https://car-inventory-bd.herokuapp.com/inventory/id=${id}`
+            const url = `https://car-inventory-bd.herokuapp.com/inventory/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     toast('Items Delete successfully', data)
-                    const remaining = products.filter(product => product.id !== id)
+                    const remaining = products.filter(product => product._id !== id)
                     setProducts(remaining)
                 })
         }
