@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SocialLink from '../SocialLink/SocialLink';
 
+
+    
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
@@ -20,7 +22,6 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, forgetError] = useSendPasswordResetEmail(auth);
 
 
-
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
@@ -33,6 +34,7 @@ const Login = () => {
 
     if (user) {
         navigate(from, { replace: true })
+        toast("SuccessFully Login")
     }
 
     if (loading) {

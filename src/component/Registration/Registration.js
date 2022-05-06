@@ -1,92 +1,72 @@
-import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import auth from "../../Firebase.init";
-import { toast } from 'react-toastify';
-
+import React, { useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase.init'
+import SocialLink from '../SocialLink/SocialLink';
 
 const Registration = () => {
-    const [validated, setValidated] = useState(false);
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
-    const navigate = useNavigate('')
-    const [createUserWithEmailAndPassword, User] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const confirmPassRef = useRef('')
 
-    if (User) {
-        navigate('/')
-    }
+    const [createUserWithEmailAndPassword, createUser, createUserLoading, createError] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const handleEmail = event => {
-        setEmail(event.target.value);
-    }
-
-
-    const handlePassword = event => {
-        setPassword(event.target.value)
-    }
-    const handleConfirmPassword = event => {
-        setConfirmPassword(event.target.value)
-    }
 
     const handleSubmit = event => {
         event.preventDefault()
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const confirmPass = confirmPassRef.current.value;
 
-        if (password !== confirmPassword) {
-            setError('Please enter the same password')
+        if (password !== confirmPass) {
+            setError('Please enter same password')
             return;
         }
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.stopPropagation();
+        if (!password.length >= 8) {
+            setError('Please input atleast 8 digit password')
+            return;
         }
-        setValidated(true);
+        else {
+            createUserWithEmailAndPassword(email, password);
+        }
+        if (createUser) {
+            navigate(from, { replace: true })
+        }
+        if (createUserLoading) {
+            return <p>Loading...</p>
+        }
 
-        createUserWithEmailAndPassword(email, password);
-        toast("Check your email");
     }
-
-
     return (
-        <div>
-            <h2 className='text-center my-4'>Registration here</h2>
-            <Form noValidate validated={validated} className='max-w-xl mx-auto my-10 border-2 border-slate-500 p-5 rounded-xl' onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control onBlur={handleEmail} type="email" name='email' placeholder="Enter email" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                    <Form.Control.Feedback type="invalid">
-                        Please choose input a email.
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control onBlur={handlePassword} type="password" name='password' placeholder="Password" required />
-                    <Form.Control.Feedback type="invalid">
-                        Please choose a Password.
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control onBlur={handleConfirmPassword} type="password" name='confirm-password' placeholder="Confirm Password" required />
-                    <Form.Control.Feedback type="invalid">
-                        Please choose a confirm Password.
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <p>
-                    Already have an account? <Link to='/login'>Login here</Link>
-                </p>
-                {error ? <p style={{ color: 'red' }}>Error: {error}</p> : ''}
-                <Button variant="primary" type="submit">
-                    Register
-                </Button>
-            </Form>
+        <div className='flex justify-center bg-gradient-to-b from-black to-teal-400 text-slate-50'>
+            <div className='w-96 px-6 py-4 my-12 rounded-lg'>
+                <h4 className='text-center pb-4 text-slate-50'>Registration here</h4>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-6">
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-slate-50 dark:text-gray-300">Your email</label>
+                        <input ref={emailRef} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required="" />
+                    </div>
+                    <div className="mb-6">
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-slate-50 dark:text-gray-300">Your password</label>
+                        <input ref={passwordRef} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required="" />
+                    </div>
+                    <div className="relative z-0 mb-6 w-full group">
+                        <label htmlFor="floating_repeat_password" className="block mb-2 text-sm font-medium text-slate-50 dark:text-gray-300">Confirm password</label>
+                        <input ref={confirmPassRef} type="password" name="repeat_password" id="floating_repeat_password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required="" />
+                    </div>
+                    {error || createError ? <p className='text-red-500'>{error || createError?.message}</p> : ''}
+                    <div className="flex items-start mb-3">
+                        <p className='text-slate-50'>Already have an account?</p>
+                        <Link to='/login' className='ml-1 text-sky-200 hover:text-black'>Log in</Link>
+                    </div>
+                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ width: '100%' }}>Registration</button>
+                </form>
+                <SocialLink></SocialLink>
+            </div>
         </div>
     );
 };

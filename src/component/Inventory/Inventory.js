@@ -1,9 +1,14 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useProduct from '../../Hooks/useProduct';
 
 const Inventory = () => {
     const [products] = useProduct()
+    const navigate = useNavigate()
+    const handleUpdate = id => {
+        navigate(`/inventory/${id}`)
+    }
     return (
         <div className='grid grid-cols-3 mx-auto container'>
             {
@@ -22,8 +27,7 @@ const Inventory = () => {
                             <ListGroupItem>{product?.quantity}</ListGroupItem>
                         </ListGroup>
                         <Card.Body>
-                            <Card.Link href="#">Card Link</Card.Link>
-                            <Card.Link href="#">Another Link</Card.Link>
+                            <Card.Link to="/"><button onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
                         </Card.Body>
                     </Card>
                 </div>)

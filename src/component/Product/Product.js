@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import axios from 'axios';
 
 const Product = () => {
     const params = useParams()
@@ -16,7 +17,8 @@ const Product = () => {
 
 
     const handleDeleteStock = () => {
-        const stocks = product.quantity - 1;
+        let stocks;
+        stocks = product.quantity - 1;
         setQuantity(stocks)
         console.log(stocks);
     }
@@ -24,22 +26,20 @@ const Product = () => {
     const handleSubmit = event => {
         event.preventDefault()
         const number = event.target.number.value;
+        console.log(number);
 
         // put method
-        fetch(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(number),
+        axios.put(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}`, {
+
         })
             .then(response => response.json())
             .then(number => {
-                console.log('Success:', number);
+                setQuantity('Success:', number);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
+        console.log(number);
 
     }
     return (
@@ -56,7 +56,7 @@ const Product = () => {
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem><span className='font-bold'>Price:</span> {product?.balance}</ListGroupItem>
                                 <ListGroupItem><span className='font-bold'>Supplier:</span> {product?.Supplier}</ListGroupItem>
-                                <ListGroupItem><span className='font-bold'>Quantity:</span> {product?.quantity}</ListGroupItem>
+                                <ListGroupItem><span className='font-bold'>Quantity:</span> {quantity}</ListGroupItem>
                             </ListGroup>
                             <button onClick={handleDeleteStock} className='bg-indigo-300 py-2 rounded-lg'>Delivered</button>
                         </Card>

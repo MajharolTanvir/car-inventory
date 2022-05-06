@@ -8,7 +8,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
 
     const handleLogOut = () => {
-        signOut()
+        signOut(auth)
     }
     return (
         <div className='container'>
