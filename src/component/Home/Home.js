@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     let slides = [
-        <img src="https://picsum.photos/800/300/?random" alt="1" />,
-        <img src="https://picsum.photos/800/301/?random" alt="2" />,
-        <img src="https://picsum.photos/800/302/?random" alt="3" />,
-        <img src="https://picsum.photos/800/303/?random" alt="4" />,
-        <img src="https://picsum.photos/800/304/?random" alt="5" />];
+        <img src="https://cdn.wallpapersafari.com/55/16/twCLD9.jpg" alt="1" />,
+        <img src="https://cdn.wallpapersafari.com/74/78/5t03FZ.jpg" alt="2" />,
+        <img src="https://wallpaperaccess.com/full/33115.jpg" alt="3" />,
+        <img src="https://wallpapercave.com/wp/CoodbqM.jpg" alt="4" />,
+        <img src="https://cdn.wallpapersafari.com/55/16/twCLD9.jpg" alt="5" />];
 
     const [products] = useProduct()
     const navigate = useNavigate()
