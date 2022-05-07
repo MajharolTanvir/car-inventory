@@ -12,7 +12,6 @@ const Product = () => {
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
-    console.log(product);
 
 
     const handleDeleteStock = (event) => {
@@ -33,11 +32,9 @@ const Product = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 const quantity = updateStock.updateQuantity;
                 const newQuantity = { ...product, quantity }
                 setProduct(newQuantity)
-                console.log(newQuantity);
             })
             .catch((error) => {
                 // console.error('Error:', error);
@@ -63,14 +60,10 @@ const Product = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                // if (data.modifiedCount > 0) {
                 const quantity = updateStock.updateQuantity;
                 const newQuantity = { ...product, quantity }
                 setProduct(newQuantity)
-                console.log(newQuantity);
                 event.target.reset()
-                // }
             })
             .catch((error) => {
                 console.error('Error:', error);

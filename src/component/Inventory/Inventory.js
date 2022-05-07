@@ -28,10 +28,10 @@ const Inventory = () => {
     }
     return (
         <div>
-            <div className='grid grid-cols-3 mx-auto container'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 mx-auto container'>
                 {
                     products.map(product => <div key={product._id} className='my-3'>
-                        <Card style={{ width: '18rem', }}>
+                        <Card className='mx-auto mt-10 shadow-xl shadow-gray-600 h-full' style={{ width: '18rem', }}>
                             <Card.Img variant="top" src={product?.picture} />
                             <Card.Body>
                                 <Card.Title>{product?.name}</Card.Title>
@@ -45,8 +45,8 @@ const Inventory = () => {
                                 <ListGroupItem>{product?.quantity}</ListGroupItem>
                             </ListGroup>
                             <Card.Body>
-                                <Card.Link to="/"><button onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
-                                <Card.Link to="/"><button onClick={() => handleDelete(product._id)}>detete product</button></Card.Link>
+                                <Card.Link to="/"><button className='px-2 py-1 rounded-lg border-2 hover:bg-sky-600 hover:text-white  border-sky-600' onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
+                                <Card.Link to="/"><button className='px-2 py-1 rounded-lg border-2 hover:bg-sky-600 hover:text-white  border-sky-600' onClick={() => handleDelete(product._id)}>detete product</button></Card.Link>
                             </Card.Body>
                         </Card>
                     </div>)
@@ -54,7 +54,7 @@ const Inventory = () => {
 
             </div>
             <div className='text-center mt-4'>
-                <Link to="/addNewItem"><button className=' ml-3 font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Add new Item</button></Link>
+                <Link to="/addNewItem"><button className='px-10 py-1 my-10 rounded-lg border-2 hover:bg-gray-600 text-xl mb-3  text-white border-gray-600'>Add new Item</button></Link>
             </div>
         </div>
     );

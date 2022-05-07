@@ -39,7 +39,7 @@ We have a sample task for you.
 
 
 12. No Fake data (data must be hosted on the database). Database could be mongodb atlas or any other noSQL database.(done)
-13. Add two more routes. one route will be `blogs`. You will need to answer at least three questions on the blog page. This won't be a protected route. We recommend answering all four questions.
+13. Add two more routes. one route will be `blogs`. You will need to answer at least three questions on the blog page. This won't be a protected route. We recommend answering all four questions.(done)
 
     13.1 Difference between `javascript` and `nodejs`
     
@@ -49,7 +49,7 @@ We have a sample task for you.
 
     13.4 What is the purpose of `jwt` and how does it work
 
-14. Create a meaningful 404 page (not found page)
+14. Create a meaningful 404 page (not found page)(done)
 
 ### Bonus: 
 1. Display error when user email address or password don't match. 

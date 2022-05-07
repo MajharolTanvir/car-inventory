@@ -26,14 +26,14 @@ const SocialLink = () => {
     return (
         <div>
             <div className='flex items-center my-3 justify-center'>
-                <div style={{ height: '3px' }} className='bg-slate-400 w-32 mr-4 rounded-lg'></div>
+                <div style={{ height: '3px' }} className='bg-gray-700 w-32 mr-4 rounded-lg'></div>
                 <p>OR</p>
-                <div style={{ height: '3px' }} className='bg-slate-400 w-32 ml-4 rounded-lg'></div>
+                <div style={{ height: '3px' }} className='bg-gray-700 w-32 ml-4 rounded-lg'></div>
             </div>
             <div className='justify-center'>
                 <div>
-                    <button className='border-2 border-cyan-300 hover:border-indigo-600 my-2 rounded-lg bg-cyan-300 hover:bg-indigo-600 text-black flex items-center justify-center text-md font-bold py-2 w-full px-10' onClick={handleSignInWithGoogle}><FaGoogle className='mr-2 text-xl' />Google sign in</button>
-                    {googleError ? <p className='text-yellow-400'>{googleError.message}</p> : ''}
+                    <button className='px-10 py-2 my-10 rounded-lg border-2 hover:bg-gray-700 text-xl mb-3  text-white border-gray-700 flex items-center justify-center w-full' onClick={handleSignInWithGoogle}><FaGoogle className='mr-2 text-xl' />Google sign in</button>
+                    {googleError ? <p className='text-red-600'>{googleError.message}</p> : ''}
                 </div>
             </div>
         </div>
