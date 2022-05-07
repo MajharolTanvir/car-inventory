@@ -1,45 +1,80 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Card, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-import axios from 'axios';
 
 const Product = () => {
-    const params = useParams()
+    const { id } = useParams()
     const [product, setProduct] = useState({})
-    const [quantity, setQuantity] = useState(0)
+    // const [quantity, setQuantity] = useState(0)
 
     useEffect(() => {
-        fetch(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}`)
+        fetch(`https://car-inventory-bd.herokuapp.com/inventory/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [params.id])
-    console.log(product.quantity);
+    }, [id]);
+    console.log(product);
 
 
-    const handleDeleteStock = () => {
-        let stocks;
-        stocks = product.quantity - 1;
-        setQuantity(stocks)
-        console.log(stocks);
+    const handleDeleteStock = (event) => {
+        event.preventDefault()
+        const recentQuantity = parseInt(product.quantity);
+        const updateQuantity = recentQuantity - 1;
+        const updateStock = { updateQuantity }
+
+
+        //  put Delivered 
+        const url = `https://car-inventory-bd.herokuapp.com/inventory/${id}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(updateStock)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const quantity = updateStock.updateQuantity;
+                const newQuantity = { ...product, quantity }
+                setProduct(newQuantity)
+                console.log(newQuantity);
+            })
+            .catch((error) => {
+                // console.error('Error:', error);
+            });
+
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        const number = event.target.number.value;
-        console.log(number);
+        const recentQuantity = parseInt(product.quantity);
+        const latestQuantity = parseInt(event.target.number.value);
+        const updateQuantity = recentQuantity + latestQuantity;
+        const updateStock = { updateQuantity }
 
         // put method
-        axios.put(`https://car-inventory-bd.herokuapp.com/inventory/${params.id}`, {
-
+        const url = `https://car-inventory-bd.herokuapp.com/inventory/${id}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(updateStock)
         })
-            .then(response => response.json())
-            .then(number => {
-                setQuantity('Success:', number);
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // if (data.modifiedCount > 0) {
+                const quantity = updateStock.updateQuantity;
+                const newQuantity = { ...product, quantity }
+                setProduct(newQuantity)
+                console.log(newQuantity);
+                event.target.reset()
+                // }
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
-        console.log(number);
 
     }
 
@@ -57,7 +92,7 @@ const Product = () => {
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem><span className='font-bold'>Price:</span> {product?.balance}</ListGroupItem>
                                 <ListGroupItem><span className='font-bold'>Supplier:</span> {product?.Supplier}</ListGroupItem>
-                                <ListGroupItem><span className='font-bold'>Quantity:</span> {quantity}</ListGroupItem>
+                                <ListGroupItem><span className='font-bold'>Quantity:</span> {product.quantity}</ListGroupItem>
                             </ListGroup>
                             <button onClick={handleDeleteStock} className='bg-indigo-300 py-2 rounded-lg'>Delivered</button>
                         </Card>
@@ -72,7 +107,6 @@ const Product = () => {
                 </form>
             </div>
             <Link to="/inventory"><button className='font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Manage inventory</button></Link>
-            <Link to="/addNewItem"><button className=' ml-3 font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Add new Item</button></Link>
         </div>
     );
 };

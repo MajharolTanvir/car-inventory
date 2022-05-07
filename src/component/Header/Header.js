@@ -23,9 +23,19 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/myItems">My items</Link>
-                            </li>
+                            {
+                                user && <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/inventory">Inventory</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/addNewItem">New item</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/myItems">My items</Link>
+                                    </li>
+                                </>
+                            }
                             {user?.email ? <button onClick={handleLogOut}>Log out</button> :
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/login">Login</Link>

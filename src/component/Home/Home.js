@@ -17,6 +17,7 @@ const Home = () => {
     const handleUpdate = id => {
         navigate(`/inventory/${id}`)
     }
+    console.log(products);
 
     const handledelete = () => {
 
@@ -44,7 +45,7 @@ const Home = () => {
                                 <ListGroup className="list-group-flush">
                                     <ListGroupItem>{product?.balance}</ListGroupItem>
                                     <ListGroupItem>{product?.Supplier}</ListGroupItem>
-                                    <ListGroupItem>{product?.quantity}</ListGroupItem>
+                                    <ListGroupItem>{product.quantity}</ListGroupItem>
                                 </ListGroup>
                                 <Card.Body>
                                     <Card.Link to="/"><button onClick={() => handleUpdate(product._id)}>Stock update</button></Card.Link>
