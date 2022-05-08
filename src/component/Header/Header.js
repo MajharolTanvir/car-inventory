@@ -29,7 +29,7 @@ const Header = () => {
                                 </>
                             }
                             {
-                                user ? <button className='mx-2 font-medium text-lg no-underline' onClick={handleLogOut}>Log out</button> : <CustomLink className='mx-2 font-medium text-lg no-underline' to="#link">Login</CustomLink>
+                                user ? <button className='mx-2 font-medium text-lg no-underline' onClick={handleLogOut}>Log out</button> : <CustomLink className='mx-2 font-medium text-lg no-underline' to="/login">Login</CustomLink>
                             }
                         </Nav>
                     </Navbar.Collapse>

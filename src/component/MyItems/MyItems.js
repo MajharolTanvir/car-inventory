@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import auth from '../../Firebase.init';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import useItems from '../../Hooks/useItems';
+import { useNavigate } from 'react-router-dom';
 
 const MyItems = () => {
-    const [user] = useAuthState(auth)
-    const [items, setItems] = useState([])
-    useEffect(() => {
-        const email = user?.email;
-        fetch(`https://car-inventory-bd.herokuapp.com/myitems?email=${email}`)
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [user])
+    const { items, setItems } = useItems()
+    const navigate = useNavigate()
+    const handleUpdate = id => {
+        navigate('/')
+    }
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?')
@@ -49,16 +45,12 @@ const MyItems = () => {
                             </ListGroup>
                             <Card.Body>
                                 <Card.Link to="/"><button className='px-2 py-1 rounded-lg border-2 hover:bg-sky-600 hover:text-white  border-sky-600' onClick={() => handleDelete(item._id)}>Delete item</button></Card.Link>
-                                {/* <Card.Link to="/"><button onClick={() => handleUpdate(item._id)}>Stock update</button></Card.Link> */}
+                                <Card.Link to="/"><button onClick={() => handleUpdate(item._id)}>Stock update</button></Card.Link>
                             </Card.Body>
                         </Card>
                     </div>)
                 }
-
             </div>
-            {/* <div className='text-center mt-4'>
-                <Link to="/addNewItem"><button className=' ml-3 font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Add new Item</button></Link>
-            </div> */}
         </div>
     );
 };

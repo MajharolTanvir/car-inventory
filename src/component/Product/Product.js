@@ -15,7 +15,6 @@ const Product = () => {
 
 
     const handleDeleteStock = (event) => {
-        event.preventDefault()
         const recentQuantity = parseInt(product.quantity);
         const updateQuantity = recentQuantity - 1;
         const updateStock = { updateQuantity }
@@ -99,7 +98,7 @@ const Product = () => {
                     <input className='py-1 px-3 border-2 border-sky-500 ml-2 rounded-md' type="submit" value="Submit" />
                 </form>
             </div>
-            <Link to="/inventory"><button className='font-bold text-xl border-2 border-sky-500 px-4 py-1 rounded-md mt-2 mb-5'>Manage inventory</button></Link>
+            <Link to="/inventory"><button className='px-10 py-1 my-10 rounded-lg border-2 hover:bg-gray-600 text-xl mb-3  text-white border-gray-600'>Manage inventory</button></Link>
         </div>
     );
 };

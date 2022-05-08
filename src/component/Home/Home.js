@@ -4,6 +4,7 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import useProduct from '../../Hooks/useProduct';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import UpcomingItems from '../Upcomming/UpcomingItems'
 
 const Home = () => {
     let slides = [
@@ -40,8 +41,14 @@ const Home = () => {
             <div className='py-20'>
                 <Carousel slides={slides} autoplay={true} interval={3000} />
             </div>
-            <div className='py-5 text-center'>
-                <h3 className='my-5 text-center'>Inventory</h3>
+            <div className='pb-5 text-center'>
+                <div className='flex justify-center items-center text-center'>
+                    <div className='h-10 w-1 bg-gray-700'></div>
+                    <div className='h-1 w-14 bg-gray-700'></div>
+                    <h3 className='my-5 border-4 border-gray-800 px-4 rounded-xl'>Inventory</h3>
+                    <div className='h-1 w-14 bg-gray-700'></div>
+                    <div className='h-10 w-1 bg-gray-700'></div>
+                </div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
                     {
                         products.slice(0, 6).map(product => <div key={product._id} className='my-3'>
@@ -66,8 +73,9 @@ const Home = () => {
                         </div>)
                     }
                 </div>
-                <Link to="/inventory"><button className='px-10 py-1 mt-10 rounded-lg border-2 hover:bg-gray-600 text-xl mb-3  text-white  border-gray-600'>Manage inventory</button></Link>
+                <Link to="/inventory"><button className='px-10 py-1 mt-10 rounded-lg border-2 hover:bg-gray-700 text-xl mb-3  text-white  border-gray-700'>Manage inventory</button></Link>
             </div>
+            <UpcomingItems></UpcomingItems>
         </div>
     );
 };
