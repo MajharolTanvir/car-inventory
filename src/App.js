@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './component/RequireAuth/RequireAuth';
 import Blogs from './component/Blogs/Blogs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemDetails from './component/ItemDetails/ItemDetails';
 
 const App = () => {
   return (
@@ -37,6 +38,11 @@ const App = () => {
         <Route path='/myitems' element={
           <RequireAuth>
             <MyItems></MyItems>
+          </RequireAuth>
+        }></Route>
+        <Route path='/myitems/:id' element={
+          <RequireAuth>
+            <ItemDetails></ItemDetails>
           </RequireAuth>
         }></Route>
         <Route path='/addNewItem' element={

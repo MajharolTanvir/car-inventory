@@ -52,17 +52,17 @@ We have a sample task for you.
 14. Create a meaningful 404 page (not found page)(done)
 
 ### Bonus: 
-1. Display error when user email address or password don't match. 
-2. Send Email Verification. Don't worry if the email goes to the spam folder or it doesn't go at all. As long as your code is there, you will be fine. Add a link for Password reset (use toast)
-3. At least 12 meaningful GitHub commits for the client-side and at least 6 meaningful commits for the server-side repository.
+1. Display error when user email address or password don't match. (done)
+2. Send Email Verification. Don't worry if the email goes to the spam folder or it doesn't go at all. As long as your code is there, you will be fine. Add a link for Password reset (use toast)(done)
+3. At least 12 meaningful GitHub commits for the client-side and at least 6 meaningful commits for the server-side repository.(done)
 4. Meaningful `readme.md` file containing your website name, a short description, link to your live site. And at least five bullet points mention your website's different features and functionality.
-5. Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional
-6. Make the website meaningful and consistent in look and feel. Give your website a relevant name. Images and all the content of the website have to be relevant. No `lorem ipsum` please. 
-7. Clean and organized Code. Organize components and add comments when needed
+5. Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional(done)
+6. Make the website meaningful and consistent in look and feel. Give your website a relevant name. Images and all the content of the website have to be relevant. No `lorem ipsum` please. (done)
+7. Clean and organized Code. Organize components and add comments when needed(done)
 8. Add a loading spinner on the home page and the login/register page. If data is loading, a spinner will be displayed.
-9. use the Environment variable on both the client and server-side. `.env` file hides db user and db password and another server-side secret info. Use .gitignore file on the server-side. 
+9. use the Environment variable on both the client and server-side. `.env` file hides db user and db password and another server-side secret info. Use .gitignore file on the server-side. (done)
 10. Implement the basic version of the `jwt` token for email/password based authentication. Upon login, you will create a jwt token and store it on the client-side, and for the `My Items` page, you will send the token with the call and verify the user. Implementing 401 and 403 is optional. For social login, jwt token implementation is optional.
-11. Create a `stackoverflow` profile and post a question or an answer at the time of submitting your assignment. You will submit the link to the stackoverflow question. If you do not want to add a question, you can add an answer on stackoverflow. If you can't add a stackoverflow question/answer, you can submit a github issue to any library that you are using. Your question or answer has to be a meaningful question or answer.
+11. Create a `stackoverflow` profile and post a question or an answer at the time of submitting your assignment. You will submit the link to the stackoverflow question. If you do not want to add a question, you can add an answer on stackoverflow. If you can't add a stackoverflow question/answer, you can submit a github issue to any library that you are using. Your question or answer has to be a meaningful question or answer.(done)
 
 
 ### Optional but highly encourage:
