@@ -1,10 +1,13 @@
-# Warehouse Management Website
-Make sure you create two private repos. One for the client side. Another for the server side.
+# Car inventory
 
-## [Client Side Private repo link](https://classroom.github.com/a/Y0bAS9YS)
-Click here for the private repo: [https://classroom.github.com/a/Y0bAS9YS](https://classroom.github.com/a/Y0bAS9YS)
+## [Check my website.Click here](https://car-inventory-6dae5.web.app/)
 
+## Description
+*I can create Home page
+*I can create Inventory page
+*I can create Add new item page
+*I can create My items page
+*I can create Login page
+*I can create Registration route
 
-
-## [Server Side Private repo link](https://classroom.github.com/a/ldz96-w6)
-Click here for the private repo: [https://classroom.github.com/a/ldz96-w6](https://classroom.github.com/a/ldz96-w6)
+### If you login my website then you can see all the route.Other wise you can see only two route. Home & login route only.
